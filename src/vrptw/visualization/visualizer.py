@@ -10,9 +10,9 @@ class Visualizer:
         """绘制收敛曲线"""
         plt.figure(figsize=(10, 6))
         plt.plot(range(1, len(costs) + 1), costs, 'b-')
-        plt.xlabel('迭代次数')
-        plt.ylabel('最优成本')
-        plt.title('收敛曲线')
+        plt.xlabel('Iterations')
+        plt.ylabel('Best Cost')
+        plt.title('Convergence Curve')
         plt.grid(True)
         plt.show()
     
@@ -23,12 +23,12 @@ class Visualizer:
         # 绘制配送中心
         plt.plot(self.problem_data['vertexs'][0, 0], 
                 self.problem_data['vertexs'][0, 1], 
-                'ks', markersize=10, label='配送中心')
+                'ks', markersize=10, label='Depot')
         
         # 绘制顾客点
         plt.plot(self.problem_data['customers'][:, 0], 
                 self.problem_data['customers'][:, 1], 
-                'ro', label='顾客')
+                'ro', label='Customers')
         
         # 为每条路径选择不同的颜色
         colors = plt.cm.rainbow(np.linspace(0, 1, len(vehicles)))
@@ -60,7 +60,7 @@ class Visualizer:
                      self.problem_data['vertexs'][0, 1]],
                     color=color, alpha=0.6)
         
-        plt.title('配送路径图')
+        plt.title('Vehicle Routing Solution')
         plt.legend()
         plt.grid(True)
         plt.show() 
