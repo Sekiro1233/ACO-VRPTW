@@ -97,12 +97,13 @@ class ACO:
         # 最后一个顾客到配送中心的信息素更新
         self.Tau[best_solution[-1], 0] += delta_tau
     
-    def run(self) -> Tuple[List[List[int]], float]:
+    def run(self) -> Tuple[List[List[int]], float, float]:
         """运行算法"""
         best_solution = None
         best_cost = float('inf')
         best_vehicles = None
         best_costs = []
+        best_distance = 0
         
         start_time = time.time()
         
@@ -139,6 +140,7 @@ class ACO:
                 best_cost = costs[min_cost_idx]
                 best_solution = solutions[min_cost_idx]
                 best_vehicles = all_vehicles[min_cost_idx]
+                _, _, best_distance = self.utils.decode_solution(best_solution)
             
             # 更新信息素
             self.update_pheromone(best_solution, best_cost)
@@ -158,4 +160,4 @@ class ACO:
         self.visualizer.plot_convergence(best_costs)
         self.visualizer.plot_solution(best_vehicles)
         
-        return best_vehicles, best_cost 
+        return best_vehicles, best_cost, best_distance

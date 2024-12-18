@@ -1,0 +1,1 @@
+1|python main.py --instance rc101.txt --ants 150 --iterations 250 
