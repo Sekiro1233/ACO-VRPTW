@@ -5,6 +5,7 @@ from typing import List, Dict
 class Visualizer:
     def __init__(self, problem_data: Dict):
         self.problem_data = problem_data
+        plt.ion()  # 打开交互模式
         
     def plot_convergence(self, costs: List[float]):
         """绘制收敛曲线"""
@@ -14,10 +15,11 @@ class Visualizer:
         plt.ylabel('Best Cost')
         plt.title('Convergence Curve')
         plt.grid(True)
-        plt.show()
+        plt.show(block=False)  # 使用非阻塞模式显示
     
     def plot_solution(self, vehicles: List[List[int]]):
         """绘制配送路径"""
+        plt.ioff()  # 关闭交互模式
         plt.figure(figsize=(12, 8))
         
         # 绘制配送中心
@@ -63,4 +65,5 @@ class Visualizer:
         plt.title('Vehicle Routing Solution')
         plt.legend()
         plt.grid(True)
-        plt.show() 
+        plt.show()
+  
